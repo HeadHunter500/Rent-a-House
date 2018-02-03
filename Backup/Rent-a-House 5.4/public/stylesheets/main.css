@@ -1,0 +1,25 @@
+#landing-bckg{
+    background-image: url(http://www.zastavki.com/pictures/2560x1600/2010/Nature_Mountains_House_in_the_valley_020705_.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width:100%;
+    height:100%;
+}
+
+#content{
+    text-align: center;
+    padding-top: 5%;
+    color: white;
+}
+
+#landing-hr{
+    width:350px;
+}
+
+#landing-h1{
+    font-weight: 700;
+}
+
+/*gotov css za landing page*/
+

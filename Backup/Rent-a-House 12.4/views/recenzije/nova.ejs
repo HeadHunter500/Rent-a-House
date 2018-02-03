@@ -1,0 +1,32 @@
+<% include ../partials/header %>
+
+    <div class="container">
+
+        <div class="row">
+
+            <h1 style="text-align: center;"><%= vikendica.ime %></h1>
+            <div style="width: 50%; margin: 25px auto;">
+                <form action="/ocjena/<%= vikendica.id %>" method="POST">
+                    <div class="form-group">
+                        Ocjena:
+                        <input class="form-control" type="number" name="ocjena" min="1" max="5">
+                    </div>
+                    <div class="form-group">
+                        Komentar:
+                        <input class="form-control" type="text" name="komentar">
+                    </div>
+                    
+                    <div class="form-group">
+
+                        <button class="btn btn-lg btn-primary btn-block">Ocjeni!</button>
+                    </div>
+                </form>
+
+                <a href="/vikendice">Povratak na vikendice</a>
+
+            </div>
+        </div>
+
+    </div>
+
+    <% include ../partials/footer %>

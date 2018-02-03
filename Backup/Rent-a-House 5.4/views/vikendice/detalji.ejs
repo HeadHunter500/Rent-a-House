@@ -1,0 +1,60 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">Detalji</p>
+            <a href='/vikendice' class="btn btn-success" style="margin-bottom:15px;">Povratak</a>
+            <div class="list-group">
+                <li class="list-group-item active">Info 1</li>
+                <li class="list-group-item">Info 2</li>
+                <li class="list-group-item">Info 3</li>
+            </div>
+        </div>
+        
+        <div class="col-md-9">
+            <div class="thumbnail">
+                <img class="img-responsive" src="<%= vikendica.slika %>">
+                <div class="caption-full">
+                    <h4 class="pull-right"><%= vikendica.cijena %> kn/dan</h4>
+                    <h4><a><%= vikendica.ime %></a></h4>
+                    <p><%= vikendica.opis %></p>
+                    <p>
+                        <%= vikendica.adresa %>, <%= vikendica.ime_grada %>
+                    </p>
+                    <p>
+                        Vikendica je trenutno: 
+                        <% if(vikendica.okupirana == "0") { %>
+                        slobodna 
+                        <a href="#" class="btn btn-primary">Rezerviraj</a>
+                        <% } else { %>
+                        zauzeta 
+                        <% } %>
+                    </p>
+                    
+                    <!--sekcija za logiku ako je admin onda daj gumbe uredi i izbrisi-->
+                    <a class="btn btn-xs btn-warning" href="/vikendice/<%= vikendica.id %>/izmijeni">Uredi</a>
+                    <form class="delete-form" action="/vikendice/<%= vikendica.id %>?_method=DELETE" method="POST" style="display:inline;">
+                            <button class="btn btn-xs btn-danger">Obriši</button>
+                    </form>
+                    
+                </div>
+            </div>
+            
+            <div class="well">
+                <div class="text-right">
+                    <a class="btn btn-success" href="/vikendice/<%= vikendica.id %>/recenzija/nova">Dodaj novu recenziju</a>
+                </div>
+                
+                <hr>
+
+                <!--sekcija za logiku za komentare-->
+                
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+
+<% include ../partials/footer %>

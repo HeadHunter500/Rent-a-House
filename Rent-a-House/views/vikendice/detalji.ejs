@@ -1,0 +1,122 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">Detalji</p>
+            <a href='/vikendice' class="btn btn-success" style="margin-bottom:15px;">Povratak</a>
+            <!--
+            <div class="list-group">
+                <li class="list-group-item active">Info 1</li>
+                <li class="list-group-item">Info 2</li>
+                <li class="list-group-item">Info 3</li>
+            </div>
+            -->
+            <div id="weather" style="">
+                <!-- div za prikaz prognoze -->
+            </div>
+        </div>
+        
+        <div class="col-md-9">
+            <div class="thumbnail">
+                <img class="img-responsive" src="<%= vikendica.slika %>">
+                <div class="caption-full">
+                    <h4 class="pull-right"><%= vikendica.cijena %> kn/dan</h4>
+                    <h4><a><%= vikendica.ime %></a></h4>
+                    <p><%= vikendica.opis %></p>
+                    <p>
+                        <%= vikendica.adresa %>, <%= vikendica.ime_grada %>
+                    </p>
+                    <p id="grad" hidden><%= vikendica.ime_grada %></p>
+                    <p>
+                        Vikendica je trenutno: 
+                        <% if(vikendica.okupirana == "0") { %>
+                        slobodna 
+                        <% if(global.id == 0){%>
+                          <a href="/login" class="btn btn-primary">Rezerviraj</a>
+
+                        <% } else{%>
+                        
+                        <a href="/rezervacija/<%= vikendica.id%>" class="btn btn-primary">Rezerviraj</a>
+                        <% } } else { %>
+                        zauzeta 
+                        <% } %>
+                    </p>
+                    
+                    <!--sekcija za logiku ako je admin onda daj gumbe uredi i izbrisi-->
+                    <%if(global.uloga==2){%>
+                    <a class="btn btn-xs btn-warning" href="/vikendice/<%= vikendica.id %>/izmijeni">Uredi</a>
+                    <form class="delete-form" action="/vikendice/<%= vikendica.id %>?_method=DELETE" method="POST" style="display:inline;">
+                            <button class="btn btn-xs btn-danger">Obriši</button>
+                    </form>
+                    <% }%>
+                </div>
+            </div>
+            
+            <div class="well">
+                <!--
+                <div class="text-right">
+                    <%//if(global.id==0){%>
+                     <a class="btn btn-success" href="/login">Dodaj novu recenziju</a>
+                    <% //} else{%>
+                    <a class="btn btn-success" href="/ocjena/<%//= vikendica.id %>">Dodaj novu recenziju</a>
+                    <% //}%>
+                </div>
+                -->
+                <hr>
+
+                <!--sekcija za logiku za komentare-->
+                <% ocjene.forEach(function(ocjena){%>
+                <p><%= ocjena.nadimak%></p>
+                 <p><b>Ocjena: </b><%= ocjena.ocjena%>/5</p>
+                  <p><b>Komentar: </b><%= ocjena.komentar%></p>
+                   <p><%= ocjena.datum%></p>
+                   <hr>
+                <% });%>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+
+<script >
+    $(document).ready(function() {
+  $.simpleWeather({
+    woeid: '2357536', //2357536
+    location: $("#grad").html(),
+    unit: 'c',
+    success: function(weather) {
+      html = '<div class="danas" style="border: 1px solid red; margin-bottom: 15px;">';
+      html += '<h2>'+weather.temp+'&deg;'+weather.units.temp+'</h2>';
+      html += '<ul><li>'+weather.city+', '+weather.region+'</li>';
+      html += '<li class="currently"><img src=' + weather.image + '></li></ul>';
+      html += '</div>';
+      
+      for(var i=1;i<weather.forecast.length-3;i++) {
+        html += '<p>'+dayName(weather.forecast[i].day)+': '+weather.forecast[i].high+ '°C, ' + weather.forecast[i].low + '°C ' + '<img src=' + weather.forecast[i].thumbnail + '>'+'</p>';
+      }
+  
+      $("#weather").html(html);
+    },
+    error: function(error) {
+      $("#weather").html('<p>'+error+'</p>');
+    }
+  });
+});
+
+function dayName(name){
+    switch(name){
+        case 'Mon': return 'Pon'; break;
+        case 'Tue': return 'Uto'; break;
+        case 'Wed': return 'Sri'; break;
+        case 'Thu': return 'Čet'; break;
+        case 'Fri': return 'Pet'; break;
+        case 'Sat': return 'Sub'; break;
+        case 'Sun': return 'Ned'; break;
+    }
+}
+
+</script>
+
+<% include ../partials/footer %>

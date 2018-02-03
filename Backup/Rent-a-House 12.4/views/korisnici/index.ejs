@@ -1,0 +1,45 @@
+<% include ../partials/header %>
+<% if(global.uloga == 2){%>
+<div class="container">
+<header class="jumbotron">
+    <h1>Lista korisnika</h1>
+</header>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Ime</th>
+        <th>Prezime</th>
+        <th>Nadimak</th>
+        <th>Email</th>
+        <th>id_uloga</th>
+        <th>id_grad</th>
+        <th>Datum registracije</th>
+        <th></th>
+        <th></th>
+    </tr>
+        <% korisnici.forEach(function(korisnik){ %>
+            <tr>
+                <td><%= korisnik.id %></td>
+                <td><%= korisnik.ime %></td>
+                <td><%= korisnik.prezime %></td>
+                <td><%= korisnik.nadimak %></td>
+                <td><%= korisnik.email %></td>
+                <td><%= korisnik.id_uloga %></td>
+                <td><%= korisnik.id_grad %></td>
+                <td><%= korisnik.datum_registracije %></td>
+                <td><a href="/korisnici/<%= korisnik.id %>?_method=GET" class="btn btn-success">Uredi</a></td>
+                <td><form action="/korisnici/<%= korisnik.id %>?_method=DELETE" method="POST">
+                    <input type="submit" class="btn btn-danger" value="Obriši">
+                </form>
+                </td>
+            </tr>
+        <%  });%>
+</div>
+</table>
+    
+<% } else{%>
+<script language="javascript">
+    window.location.href = "https://pios2-denix00.c9users.io/"
+</script>
+<% }%>
+<% include ../partials/footer %>

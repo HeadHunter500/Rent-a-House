@@ -1,0 +1,32 @@
+<% include ../partials/header %>
+
+    <div class="container">
+
+        <div class="row">
+
+            <h1 style="text-align: center;"><%= vikendica.ime %></h1>
+            <div style="width: 50%; margin: 25px auto;">
+                <form action="/rezervacija/<%= vikendica.id %>" method="POST">
+                    <div class="form-group">
+                        Datum od:
+                        <input class="form-control" type="date" name="datum_od">
+                    </div>
+                    <div class="form-group">
+                        Datum do:
+                        <input class="form-control" type="date" name="datum_do">
+                    </div>
+                    
+                    <div class="form-group">
+
+                        <button class="btn btn-lg btn-primary btn-block">Rezerviraj!</button>
+                    </div>
+                </form>
+
+                <a href="/vikendice">Povratak na vikendice</a>
+
+            </div>
+        </div>
+
+    </div>
+
+    <% include ../partials/footer %>

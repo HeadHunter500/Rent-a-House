@@ -1,0 +1,36 @@
+<% include ../partials/header %>
+<% if(global.uloga == 2){%>
+<div class="container">
+<header class="jumbotron">
+    <% if(logs == ""){ %>
+        <h1> Nema logova %></h1>
+    <% } else { %>
+        <h1>Logovi korisnika <%= logs[0].email %></h1>
+    <% } %>
+</header>
+<% if(logs != "") { %>
+<table class="table">
+    <tr>
+        <th>Email</th>
+        <th>Akcija</th>
+        <th>IP</th>
+        <th>Datum i vrijeme</th>
+    </tr>
+        <% logs.forEach(function(log){ %>
+            <tr>
+                <td><%= log.email %></td>
+                <td><%= log.action %></td>
+                <td><%= log.ip %></td>
+                <td><%= log.dateTime %></td>
+            </tr>
+        <%  });%>
+</div>
+</table>
+<% } %>
+    
+<% } else{%>
+<script language="javascript">
+    window.location.href = "https://pios2-denix00.c9users.io/"
+</script>
+<% }%>
+<% include ../partials/footer %>

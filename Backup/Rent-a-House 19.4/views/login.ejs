@@ -1,0 +1,43 @@
+<!--<div id="landing-bckg">-->
+<% include partials/header %>
+
+
+
+
+  <div class="container">
+    <div style="width: 50%; margin: 25px auto;">
+      <h1 style="text-align: center;">Prijava</h1>
+      <form class="form-horizontal" method="post" action="/login">
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="email">Email:</label>
+          <div class="col-sm-10">
+            <input type="email" class="form-control" name="email" placeholder="Unesi email">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="lozinka">Lozinka:</label>
+          <div class="col-sm-10">
+            <input type="password" class="form-control" name="lozinka" placeholder="Unesi lozinku">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            
+                <a href ="/register">Nemate račun?</a>
+            
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">Prijavi me</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
+
+  <% include partials/footer %>
+    <!--</div>-->

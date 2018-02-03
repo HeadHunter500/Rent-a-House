@@ -1,0 +1,58 @@
+<% include ../partials/header %>
+
+    <div class="container">
+
+        <div class="row">
+
+            <h1 style="text-align: center;">Izmjena podatka vikendice</h1>
+            <div style="width: 50%; margin: 25px auto;">
+                <form action="/vikendice/ <%= vikendica.id %>?_method=PUT" method="POST">
+                    <div class="form-group">
+                        Ime:
+                        <input class="form-control" type="text" name="ime" value="<%= vikendica.ime %>">
+                    </div>
+                    <div class="form-group">
+                        Opis:
+                        <input class="form-control" type="text" name="opis" value="<%= vikendica.opis %>">
+                    </div>
+                    <div class="form-group">
+                        Adresa:
+                        <input class="form-control" type="text" name="adresa" value="<%= vikendica.adresa %>">
+                    </div>
+               
+                    <div class="form-group">
+                        Slika:
+                        <input class="form-control" type="text" name="slika" value="<%= vikendica.slika %>">
+                    </div>
+                    <div class="form-group">
+                        <% if(vikendica.okupirana=="1" ) { %>
+                            <input type="radio" id="okupirana" name="okupirana" value="1" checked>Rezervirana
+                            <br>
+                            <input type="radio" id="okupirana" name="okupirana" value="0">Slobodna
+                            <br>
+                            <% } else { %>
+                                <input type="radio" id="okupirana" name="okupirana" value="1">Rezervirana
+                                <br>
+                                <input type="radio" id="okupirana" name="okupirana" value="0" checked>Slobodna
+                                <br>
+                                <% } %>
+                    </div>
+
+                    <div class="form-group">
+                        Cijena:
+                        <input class="form-control" type="number" step="any" name="cijena" value="<%= vikendica.cijena %>">
+                    </div>
+                    <div class="form-group">
+
+                        <button class="btn btn-lg btn-primary btn-block">Spremi!</button>
+                    </div>
+                </form>
+
+                <a href="/vikendice">Povratak na vikendice</a>
+
+            </div>
+        </div>
+
+    </div>
+
+    <% include ../partials/footer %>

@@ -1,0 +1,8 @@
+188.166.166.100/phpmyadmin
+root
+6le7Wijz4H
+
+username masina: root
+password masina: pios2016
+
+

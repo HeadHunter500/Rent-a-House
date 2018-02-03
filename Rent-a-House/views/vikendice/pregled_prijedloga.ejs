@@ -1,0 +1,61 @@
+<% include ../partials/header %>
+<% if(global.uloga == 2){%>
+<div class="container">
+<header class="jumbotron">
+    <h1>Lista prijedloga vikendica</h1>
+</header>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>ID Korisnika</th>
+        <th>Ime Vikendice</th>
+        <th>Adresa</th>
+        <th>id_grad</th>
+        <th>Slika</th>
+        <th>Opis</th>
+        <th>Cijena</th>
+        <th>Datum Zahtjeva</th>
+        <th>Status</th> 
+        <th></th> 
+        <th></th> 
+    </tr>
+        <% prijedlozi.forEach(function(prijedlog){ %>
+            <tr>
+                <td><%= prijedlog.id %></td>
+                <td><%= prijedlog.id_korisnika %></td>
+                <td><%= prijedlog.ime_vikendice %></td>
+                <td><%= prijedlog.adresa %></td>
+                <td><%= prijedlog.id_grad %></td>
+                <td><%= prijedlog.slika %></td>
+                <td><%= prijedlog.opis %></td>
+                <td><%= prijedlog.cijena %> kn/dan</td>
+                <td><%= prijedlog.datum_zahtijeva %></td>
+                <%if(prijedlog.status==0){%>
+                    <td>Na Čekanju</td>
+                    
+                     <td><form action="/prijedlog/admin/prihvati/<%= prijedlog.id %>?_method=PUT" method="POST">
+                    <input type="submit" class="btn btn-success" value="Prihvati">
+                    </form>
+                    </td>
+                    
+                    <td><form action="/prijedlog/admin/odbij/<%= prijedlog.id %>?_method=PUT" method="POST">
+                    <input type="submit" class="btn btn-danger" value="Odbij">
+                    </form>
+                    </td>
+                    
+                <% }else if(prijedlog.status==1){%>
+                    <td>Prihvaćen</td>
+                <% } else if(prijedlog.status==2){%>
+                    <td>Odbijen</td>
+                <% }%>
+            </tr>
+        <%  });%>
+</div>
+</table>
+    
+<% } else{%>
+<script language="javascript">
+    window.location.href = "https://pios2-denix00.c9users.io/vikendice"
+</script>
+<% }%>
+<% include ../partials/footer %>

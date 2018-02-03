@@ -1,0 +1,43 @@
+<% include ../partials/header %>
+
+    <div class="container">
+
+        <div class="row">
+
+            <h1 style="text-align: center;">Izmjena korisnika</h1>
+            <div style="width: 50%; margin: 25px auto;">
+                <form action="/korisnici/<%= korisnik.id %>?_method=PUT" method="POST">
+                    <div class="form-group">
+                        Ime:
+                        <input class="form-control" type="text" name="ime" value="<%= korisnik.ime %>">
+                    </div>
+                    <div class="form-group">
+                        Prezime:
+                        <input class="form-control" type="text" name="prezime" value="<%= korisnik.prezime %>">
+                    </div>
+                    <div class="form-group">
+                        Nadimak:
+                        <input class="form-control" type="text" name="nadimak" value="<%= korisnik.nadimak %>">
+                    </div>
+                    <div class="form-group">
+                        Email:
+                        <input class="form-control" type="text" name="email" value="<%= korisnik.email %>">
+                    </div>
+                    
+                    <div class="form-group">
+                     <td><a href="/korisnici/lozinka/edit/<%= korisnik.id %>?_method=GET" class="btn btn-success">Promijeni lozinku</a></td>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button class="btn btn-lg btn-primary btn-block">Spremi!</button>
+                    </div>
+                </form>
+
+                <a href="/korisnici">Povratak</a>
+
+            </div>
+        </div>
+
+    </div>
+
+    <% include ../partials/footer %>

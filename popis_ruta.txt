@@ -1,0 +1,97 @@
+-----------------POČETNA------------------------
+GET - / - početna stranica
+
+
+----------------------------LOGIN--------------------------
+GET - /login - forma za login
+POST - /login - projverava u bazi da li postoji zadani korisnik i prijavljuje ga
+
+----------------------------LOG OUT-------------------
+GET - /odjava - odjavljuje korisnika (odlogirani mod rada)
+
+---------------------------REGISTRACIJA-----------------------
+GET - /register - forma za registraciju korisnika
+POST - /korisnici/registracija - unosi korisnika u bazu
+
+PARAMETRI:  
+
+nadimak
+lozinka
+email
+ime
+prezime
+id_grad
+
+-----------------------------KORISNICI------------------------
+GET - /korisnici  - vraća sve korisnike iz baze korisnici
+GET - /korisnici/:id  - vraća korisnika iz baze korisnici sa zadanim id-jem (forma za edit korisnika)
+DELETE - /korisnici/:id - briše korisnika sa određenim id-jem
+PUT - /korisnici/:id - mijenja određenog korisnika
+PARAMETRI:
+
+nadimak
+email
+ime
+prezime
+id_grad
+
+
+GET - /korisnici/lozinks/edit/:id - forma za mijenjanje lozinke korisnika
+POST - /korisnici/lozinka/edit/:id - mijenja lozinku korisnika
+PARAMETRI:
+
+lozinka
+
+-----------------------------VIKENDICE-----------------------
+GET - /vikendice/registracija - forma za registraciju nove vikendice (admin)
+POST - /vikendice/registracija - unosi vikendicu u bazu
+PARAMETRI:
+
+ime
+opis
+slika
+adresa
+id_grad
+
+DELETE - /vikendice/:id - briše vikendicu sa određenim id-jem (admin)
+GET - /vikendice/:id/izmijeni - dohvaća podatke za vikendicu i šalje na formu
+PUT - /vikendice/:id - mijenja podatke vikendice, editira
+GET - /vikendice/:id  - vraća vikendicu iz baze vikendice sa zadanim id-jem
+GET - /vikendice  - vraća sve vikendice iz baze vikendice
+
+
+
+GET - /prijedlog - forma za prijedlog vikendice
+POST - /prijedlog - unosi vikendicu u bazu prijedlog_vikendica (korisnik adminu šalje molbu da mu se doda vikendica)
+PARAMETRI:
+
+id_korisnik
+ime_vikendica
+adresa
+id_grad
+slika
+opis
+
+GET - /rezervacija/:id_vikendica - forma za rezervaciju
+POST - /rezervacija/:id_vikendica - Korisnik rezervira boravak u određenoj vikendici na određeno vrijeme
+
+PARAMETRI:
+
+id_korisnik
+id_vikendica
+datum_od
+datum_do
+
+GET - /ocjena/:id_vikenica - forma za ocjenjivanje
+POST - /ocjena/:id_vikendica - korisnik ocijenjuje određenu vikendicu i stavlja se is_rated na 1 u tablici boravljenje (ne prikazuje se više pod pending)
+
+PARAMETRI:
+
+id_vikendica
+id_korisnik
+ocjena
+komentar
+
+GET - /boravak/id_korisnik  - prikazuje za određenog korisnika sva njegova boravljenja u vikendicama koja nisu još ocijenjena
+
+

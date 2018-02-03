@@ -1,0 +1,37 @@
+<% include ../partials/header %>
+
+<div class="container">
+<header class="jumbotron">
+    <h1>Vaši boravci</h1>
+</header>
+<table class="table">
+    <tr>
+        
+        <th>Vikendica</th>
+        <th>Od</th>
+        <th>Do</th>
+        <th>Datum rezervacije</th>
+      
+        <th></th>
+        
+    </tr>
+        <% boravci.forEach(function(boravak){ %>
+            <tr>
+                <td><%= boravak.vikendica %></td>
+                <td><%= boravak.od %></td>
+                <td><%= boravak.do %></td>
+                <td><%= boravak.rezervacija %></td>
+           
+                <% if(!boravak.is_rated){%>
+                <td><a href='/ocjena/<%= boravak.id_vikendica %>' class="btn btn-success">Ocjeni</a></td>
+                <% }%>
+            </tr>
+        <%  });%>
+</div>
+</table>
+
+<a href="/vikendice">Povratak</a>
+    
+
+<% include ../partials/footer %>
+

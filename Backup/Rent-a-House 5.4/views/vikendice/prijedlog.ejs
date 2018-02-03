@@ -1,0 +1,42 @@
+<% include ../partials/header %>
+
+    <div class="container">
+
+        <div class="row">
+
+            <h1 style="text-align: center;">Prijedlog vikendice</h1>
+            <div style="width: 50%; margin: 25px auto;">
+                <form action="/prijedlog" method="POST">
+                    <input type="hidden" name="id_korisnika" value="1">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="ime_vikendice" placeholder="Ime vikendice">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="opis" placeholder="Opis">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="adresa" placeholder="Adresa">
+                    </div>
+                    <div class="form-group">
+                        Grad:
+                        <select name="id_grad">
+                            <option value="1">Zagreb</option>
+                            <option value="2">Bjelovar</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="slika" placeholder="image url">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-lg btn-primary btn-block">Predloži!</button>
+                    </div>
+                </form>
+
+                <a href="/vikendice">Povratak na vikendice</a>
+
+            </div>
+        </div>
+
+    </div>
+
+    <% include ../partials/footer %>

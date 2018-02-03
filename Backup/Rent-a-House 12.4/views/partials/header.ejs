@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Rent-a-House</title>
+    
+
+    <link rel="icon" type="image/gif" href="Favicon_ikone/animated_favicon1.gif">
+    <link rel="shortcut icon" href="vikendica.ico" type="image/x-icon"> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    
+    <script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
+    <script   src="/jquery.simpleWeather.js"></script>
+    
+</head>
+
+<body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">Rent-a-House</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                       
+                    <% if(global.id){  %> 
+                    
+                    <%if(global.uloga == 2){%>
+                    <li><a href="/korisnici">Korisnici</a></li>
+                    <% }%>
+                    
+                    <li><a href="/korisnici/<%= global.id%>?_method=GET">Dobrodošao/la <%= global.ime %></a></li>
+                    <li><a href="/odjava">Odjava</a></li>
+
+                    <% } else if(global.id ==0){%>
+                    
+                        <li><a href="/login">Prijava</a></li>
+                        <li><a href="/register">Registracija</a></li>
+                    <% }%>
+                    
+                    
+                    </ul>
+                </div>
+            </div>
+        </nav>

@@ -1,0 +1,36 @@
+<% include ../partials/header %>
+
+<div class="container">
+<header class="jumbotron">
+    <h1>Dobrodošli na Rent-a-House!</h1>
+    <p>Pogledajte naše vikendice u kojima možete provesti predivan odmor!</p>
+    <p>
+    <% if(global.uloga==2){ %>
+    <a class="btn btn-primary btn-large" href="/vikendice/registracija">Dodaj novu vikendicu</a>
+    <% }%>
+    <% if(global.id == 0){ %>
+    <a class="btn btn-warning btn-large" href="/login">Predloži vikendicu</a>
+    <%} else{%>
+    <a class="btn btn-warning btn-large" href="/prijedlog">Predloži vikendicu</a>
+    <% }%>
+    </p>
+</header>
+
+    <div class="row text-center" class="row text-center" style="display:flex; flex-wrap:wrap;">
+        <% vikendice.forEach(function(vikendica){ %>
+            <div class="col-md-3 col-sm-6"> 
+                <div class="thumbnail"> 
+                    <img src="<%= vikendica.slika %>">
+                    <div class="captiom">
+                        <h4> <%= vikendica.ime  %> </h4>
+                    </div>
+                    <p>
+                        <a href="/vikendice/<%= vikendica.id %>" class="btn btn-primary">Više informacija</a>
+                    </p>
+                </div>  
+            </div>
+        <%  });%>
+    </div>
+</div>
+
+<% include ../partials/footer %>
